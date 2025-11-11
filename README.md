@@ -25,8 +25,6 @@ My Arch + i3 setup. Minimal for low end devices. This is my first ever rice so t
 
 ## Wallpaper
 
-![cat](wallpapers/cat.jpg)
-
 I already provided a black and white wallpaper. Feel free to change it.
 
 ## Install
