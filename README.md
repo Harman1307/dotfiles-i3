@@ -30,7 +30,7 @@ I already provided a black and white wallpaper. Feel free to change it.
 ## Install
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/dotfiles
+git clone https://github.com/Harman1307/dotfiles
 cd dotfiles
 ./install.sh
 wal -i wallpapers/cat.jpg
