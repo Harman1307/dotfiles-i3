@@ -20,3 +20,5 @@ alias imgs='sxiv'
 
 # Created by `pipx` on 2025-11-15 13:12:21
 export PATH="$PATH:/home/harman/.local/bin"
+alias pokemon='pokemon-colorscripts'
+alias poke='pokemon-colorscripts'

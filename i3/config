@@ -60,7 +60,6 @@ client.unfocused        $bg     $bg        $fg     $bg
 client.urgent           $bg     $bg        $fg     $bg
 
 exec_always --no-startup-id wal-startup
-exec --no-startup-id ~/bin/apply-pywal-locked
 
 
 
@@ -107,11 +106,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
 
 # System tray
-bar {
-    position top
-    tray_output primary
-    mode invisible
-}
 
 
 # Dunst notifications
@@ -132,4 +126,19 @@ hide_edge_borders smart
 client.focused          #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
 client.focused_inactive #313244 #313244 #cdd6f4 #313244 #313244
 client.unfocused        #313244 #313244 #cdd6f4 #313244 #313244
+exec_always --no-startup-id ~/.config/i3/lock.sh &
+exec_always --no-startup-id ~/.config/i3/lock-prep.sh &
+bindsym $mod+x exec --no-startup-id ~/.config/i3/lock.sh
+exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/lock.sh' &
+
+exec_always --no-startup-id wal -R -n
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Wallpaper switcher
+exec_always --no-startup-id feh --bg-fill $(cat ~/.cache/wal/wal)
+
+# Random wallpaper
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/scripts/random-wallpaper.sh
+bindsym $mod+w exec --no-startup-id ~/.config/scripts/wallpaper-switcher.sh
+exec --no-startup-id devilspie2 &
+exec --no-startup-id ~/.config/scripts/firefox-transparent.sh &
