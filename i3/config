@@ -92,7 +92,6 @@ exec --no-startup-id ~/bin/apply-pywal-locked
 
 
 default_border none
-exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.local/bin/wal-vscode
 exec_always --no-startup-id ~/.local/bin/wal-gtk
 
@@ -106,7 +105,6 @@ bindsym F3 exec --no-startup-id amixer set Master 1%+
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
-exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # System tray
 bar {
@@ -114,3 +112,24 @@ bar {
     tray_output primary
     mode invisible
 }
+
+
+# Dunst notifications
+exec_always --no-startup-id dunst
+
+# Power menu
+bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/powermenu
+
+# Performance tweaks
+for_window [class=".*"] border pixel 2
+hide_edge_borders smart
+
+# Performance tweaks
+for_window [class=".*"] border pixel 2
+hide_edge_borders smart
+
+# Remove blue focused window border - use your background color instead
+client.focused          #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
+client.focused_inactive #313244 #313244 #cdd6f4 #313244 #313244
+client.unfocused        #313244 #313244 #cdd6f4 #313244 #313244
+exec_always --no-startup-id ~/.config/polybar/launch.sh

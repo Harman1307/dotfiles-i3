@@ -38,7 +38,6 @@ bindsym $mod+Shift+Tab focus prev
 # Gaps & Border
 gaps inner 4
 gaps outer 4
-default_border pixel 1
 
 # Font
 font pango:JetBrainsMono Nerd Font 9
@@ -62,14 +61,6 @@ client.urgent           $bg     $bg        $fg     $bg
 
 exec_always --no-startup-id wal-startup
 exec --no-startup-id ~/bin/apply-pywal-locked
-exec --no-startup-id ~/.config/polybar/launch.sh
-
-
-
-
-# === VOLUME CONTROL: F1/F2/F3 (NO FN KEY REQUIRED) ===
-
-# === VOLUME KEYS (F1, F2, F3) ===
 
 
 
@@ -79,7 +70,70 @@ exec --no-startup-id ~/.config/polybar/launch.sh
 
 
 
-# Volume Control
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# === VOLUME CONTROL: F1/F2/F3 ONLY (NO FN, NO DUPLICATES) ===
+
+
+
+default_border none
+exec_always --no-startup-id ~/.local/bin/wal-vscode
+exec_always --no-startup-id ~/.local/bin/wal-gtk
+
+# MPV window rules
+for_window [class="mpv"] floating enable, resize set 1280 720, move position center
+
+# Volume Control (1% steps)
+bindsym F1 exec --no-startup-id amixer set Master toggle
+bindsym F2 exec --no-startup-id amixer set Master 1%-
+bindsym F3 exec --no-startup-id amixer set Master 1%+
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
+
+# System tray
+bar {
+    position top
+    tray_output primary
+    mode invisible
+}
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Dunst notifications
+exec_always --no-startup-id dunst
+
+# Auto lock after 10 minutes
+exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l blur"
+
+# Power menu
+bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/powermenu
+
+# Lock screen
+bindsym $mod+Shift+x exec --no-startup-id betterlockscreen -l blur
+
+# Dunst notifications
+exec_always --no-startup-id dunst
+
+# Auto lock after 10 minutes
+exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock" -detectsleep
+
+# Power menu (macOS style)
+bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/powermenu
+
+# Lock screen (macOS style)
+bindsym $mod+Shift+x exec --no-startup-id ~/.local/bin/lock

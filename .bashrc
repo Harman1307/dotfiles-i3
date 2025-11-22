@@ -16,3 +16,7 @@ pactl set-sink-volume @DEFAULT_SINK@ -- --use-sample-interval 2
 # Media aliases
 alias play='mpv'
 alias imgs='sxiv'
+
+
+# Created by `pipx` on 2025-11-15 13:12:21
+export PATH="$PATH:/home/harman/.local/bin"
