@@ -1,27 +1,18 @@
 #!/bin/bash
-
 WALLPAPER_DIR=~/wallpapers
+wallpapers=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" \) | sort))
 
-wallpapers=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | sort))
+[ ${#wallpapers[@]} -eq 0 ] && { notify-send "No wallpapers found"; exit 1; }
 
-if [ ${#wallpapers[@]} -eq 0 ]; then
-    notify-send "No wallpapers found"
-    exit 1
-fi
+notify-send "Wallpaper Switcher" "Script started!"
 
-# sxiv thumbnail grid: m to mark, q to confirm
-chosen=$(sxiv -t -o "${wallpapers[@]}" 2>/dev/null)
+chosen=$(sxiv -t -o "${wallpapers[@]}")
 
-if [ -n "$chosen" ]; then
-    wal -i "$chosen" -n &
+[ -n "$chosen" ] && {
+    wal -i "$chosen" -n
+    xrdb -merge ~/.Xresources
     feh --bg-fill "$chosen"
-    
-    killall polybar
-    sleep 0.5
-    ~/.config/polybar/launch.sh &
-    
-    pkill -f lock-prep.sh
-    ~/.config/i3/lock-prep.sh &
-    
-    notify-send "Wallpaper Changed" "$(basename "$chosen")"
-fi
+    killall polybar; sleep 0.3; ~/.config/polybar/launch.sh &
+    pkill -f lock-prep.sh; ~/.config/i3/lock-prep.sh &
+    notify-send "Wallpaper changed" "$(basename "$chosen")"
+}

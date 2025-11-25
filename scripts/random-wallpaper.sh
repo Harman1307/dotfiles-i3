@@ -12,11 +12,14 @@ fi
 wallpaper="${wallpapers[RANDOM % ${#wallpapers[@]}]}"
 
 if [ -n "$wallpaper" ]; then
-    wal -i "$wallpaper" -n &
+    wal -i "$wallpaper" -n
+    xrdb -merge ~/.Xresources
     feh --bg-fill "$wallpaper"
     
     killall polybar
+    sleep 0.3
     ~/.config/polybar/launch.sh &
+    
     pkill -f lock-prep.sh
     ~/.config/i3/lock-prep.sh &
     

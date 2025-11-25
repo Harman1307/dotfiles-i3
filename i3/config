@@ -30,6 +30,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+d exec rofi -show drun -config ~/.config/rofi/config.rasi
 bindsym $mod+e exec thunar
 bindsym $mod+Shift+q kill
+bindsym $mod+w exec --no-startup-id ~/.config/scripts/wallpaper-switcher.sh
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/scripts/random-wallpaper.sh
 
 # Layout
 bindsym $mod+Tab   focus next
@@ -38,66 +40,25 @@ bindsym $mod+Shift+Tab focus prev
 # Gaps & Border
 gaps inner 4
 gaps outer 4
+default_border none
+for_window [class=".*"] border pixel 2
+hide_edge_borders smart
 
 # Font
 font pango:JetBrainsMono Nerd Font 9
-
-include-file = ~/.cache/wal/colors-i3
-
-# Startup
-exec --no-startup-id picom -b
-exec --no-startup-id feh --bg-fill /home/harman/wallpapers/Cat.jpg
-exec --no-startup-id wal -i /home/harman/wallpapers/Cat.jpg -q
 
 # Pywal colors
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color0 #000000
 set_from_resource $accent i3wm.color4 #0000ff
 
-client.focused          $accent $accent    $fg     $accent
-client.focused_inactive $bg     $bg        $fg     $bg
-client.unfocused        $bg     $bg        $fg     $bg
-client.urgent           $bg     $bg        $fg     $bg
+# Window colors (pywal integrated + no blue border)
+client.focused          #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
+client.focused_inactive #313244 #313244 #cdd6f4 #313244 #313244
+client.unfocused        #313244 #313244 #cdd6f4 #313244 #313244
+client.urgent           $bg     $bg     $fg     $bg
 
-exec_always --no-startup-id wal-startup
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# === VOLUME CONTROL: F1/F2/F3 ONLY (NO FN, NO DUPLICATES) ===
-
-
-
-default_border none
-exec_always --no-startup-id ~/.local/bin/wal-vscode
-exec_always --no-startup-id ~/.local/bin/wal-gtk
-
-# MPV window rules
-for_window [class="mpv"] floating enable, resize set 1280 720, move position center
-
-# Volume Control (1% steps)
+# Volume Control
 bindsym F1 exec --no-startup-id amixer set Master toggle
 bindsym F2 exec --no-startup-id amixer set Master 1%-
 bindsym F3 exec --no-startup-id amixer set Master 1%+
@@ -105,40 +66,28 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
 
-# System tray
-
-
-# Dunst notifications
-exec_always --no-startup-id dunst
+# Lock screen
+bindsym $mod+x exec --no-startup-id ~/.config/i3/lock.sh
+exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/lock.sh' &
 
 # Power menu
 bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/powermenu
 
-# Performance tweaks
-for_window [class=".*"] border pixel 2
-hide_edge_borders smart
+# MPV window rules
+for_window [class="mpv"] floating enable, resize set 1280 720, move position center
 
-# Performance tweaks
-for_window [class=".*"] border pixel 2
-hide_edge_borders smart
-
-# Remove blue focused window border - use your background color instead
-client.focused          #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
-client.focused_inactive #313244 #313244 #cdd6f4 #313244 #313244
-client.unfocused        #313244 #313244 #cdd6f4 #313244 #313244
-exec_always --no-startup-id ~/.config/i3/lock.sh &
-exec_always --no-startup-id ~/.config/i3/lock-prep.sh &
-bindsym $mod+x exec --no-startup-id ~/.config/i3/lock.sh
-exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/lock.sh' &
-
-exec_always --no-startup-id wal -R -n
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-
-# Wallpaper switcher
-exec_always --no-startup-id feh --bg-fill $(cat ~/.cache/wal/wal)
-
-# Random wallpaper
-bindsym $mod+Shift+w exec --no-startup-id ~/.config/scripts/random-wallpaper.sh
-bindsym $mod+w exec --no-startup-id ~/.config/scripts/wallpaper-switcher.sh
+# === STARTUP (exec once) ===
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id devilspie2 &
 exec --no-startup-id ~/.config/scripts/firefox-transparent.sh &
+exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/lock.sh' &
+
+# === STARTUP (exec_always - runs on reload) ===
+exec_always --no-startup-id wal -R -n
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.local/bin/wal-vscode
+exec_always --no-startup-id ~/.local/bin/wal-gtk
+exec_always --no-startup-id dunst
+exec_always --no-startup-id ~/.config/i3/lock-prep.sh &
+exec_always --no-startup-id feh --bg-fill $(cat ~/.cache/wal/wal)
