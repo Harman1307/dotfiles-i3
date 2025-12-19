@@ -19,7 +19,7 @@ my daily driver arch + i3 setup
 ## install
 
 ```bash
-git clone https://github.com/USERNAME/dotfiles-i3.git ~/dotfiles-i3
+git clone https://github.com/Harman1307/dotfiles-i3.git ~/dotfiles-i3
 cd ~/dotfiles-i3
 chmod +x install.sh
 ./install.sh
