@@ -29,8 +29,6 @@ my daily driver arch + i3 setup
   <img src="screenshot7.png" width="600" alt="7">
 </div>
 
-<em>Scroll horizontally ← → to see all screenshots</em>
-
 ## install
 
 ```bash
