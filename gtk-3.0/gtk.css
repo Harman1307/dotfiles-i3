@@ -1,0 +1,447 @@
+/* ===== FORCE DARK BACKGROUNDS ===== */
+* {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+}
+
+window {
+    background-color: alpha(#1f1e1c, 0.93);
+    color: #dad5c1;
+}
+
+dialog {
+    background-color: alpha(#1f1e1c, 0.95);
+    color: #dad5c1;
+}
+
+dialog box {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+}
+
+dialog label {
+    color: #dad5c1;
+    background-color: transparent;
+}
+
+/* ===== FIX BUTTONS (No white backgrounds) ===== */
+button {
+    background-image: none;
+    background-color: #989587;
+    color: #dad5c1;
+    border: 1px solid #989587;
+    border-radius: 3px;
+    padding: 6px 12px;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+button:hover {
+    background-image: none;
+    background-color: #dad5c1;
+    color: #1f1e1c;
+    border: 1px solid #dad5c1;
+}
+
+button:active,
+button:checked {
+    background-image: none;
+    background-color: #dad5c1;
+    color: #1f1e1c;
+}
+
+button:disabled {
+    background-image: none;
+    background-color: alpha(#989587, 0.3);
+    color: #989587;
+}
+
+button label {
+    color: inherit;
+    background-color: transparent;
+}
+
+/* Fix suggested/destructive action buttons */
+button.suggested-action {
+    background-image: none;
+    background-color: #dad5c1;
+    color: #1f1e1c;
+}
+
+button.destructive-action {
+    background-image: none;
+    background-color: #ff5555;
+    color: #1f1e1c;
+}
+
+/* ===== NOTEBOOK TABS ===== */
+notebook {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+}
+
+notebook header {
+    background-color: #1f1e1c;
+    border-bottom: 1px solid #989587;
+}
+
+notebook tab {
+    background-image: none;
+    background-color: alpha(#989587, 0.3);
+    color: #dad5c1;
+    border: 1px solid transparent;
+    padding: 8px 16px;
+}
+
+notebook tab:checked {
+    background-image: none;
+    background-color: alpha(#dad5c1, 0.2);
+    color: #dad5c1;
+    border-bottom: 2px solid #dad5c1;
+}
+
+notebook tab label {
+    color: inherit;
+    background-color: transparent;
+}
+
+notebook > stack {
+    background-color: #1f1e1c;
+}
+
+/* ===== LABELS ===== */
+label {
+    color: #dad5c1;
+    background-color: transparent;
+}
+
+/* ===== FRAMES ===== */
+frame {
+    border: 1px solid #989587;
+    background-color: #1f1e1c;
+}
+
+frame > border {
+    border: none;
+    background-color: transparent;
+}
+
+frame > label {
+    color: #dad5c1;
+}
+
+/* ===== LIST BOXES ===== */
+list {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border: 1px solid #989587;
+}
+
+list row {
+    background-color: transparent;
+    color: #dad5c1;
+}
+
+list row:hover {
+    background-color: alpha(#989587, 0.3);
+}
+
+list row:selected {
+    background-color: alpha(#dad5c1, 0.3);
+    color: #dad5c1;
+}
+
+list row label {
+    color: inherit;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border-right: 1px solid #989587;
+}
+
+/* ===== MAIN VIEW ===== */
+.view {
+    background-color: transparent;
+    color: #dad5c1;
+}
+
+iconview {
+    background-color: transparent;
+    color: #dad5c1;
+}
+
+iconview:selected {
+    background-color: alpha(#dad5c1, 0.3);
+    color: #dad5c1;
+}
+
+treeview {
+    background-color: transparent;
+    color: #dad5c1;
+}
+
+treeview:selected {
+    background-color: alpha(#dad5c1, 0.3);
+    color: #dad5c1;
+}
+
+treeview header button {
+    background-image: none;
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border: 1px solid #989587;
+}
+
+/* ===== SCROLLBARS ===== */
+scrollbar {
+    background-color: transparent;
+}
+
+scrollbar slider {
+    background-color: alpha(#989587, 0.6);
+    border-radius: 10px;
+    min-width: 8px;
+    min-height: 8px;
+}
+
+scrollbar slider:hover {
+    background-color: alpha(#dad5c1, 0.8);
+}
+
+/* ===== ENTRY FIELDS ===== */
+entry {
+    background-image: none;
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border: 1px solid #989587;
+    border-radius: 3px;
+    padding: 6px;
+    box-shadow: none;
+}
+
+entry:focus {
+    border: 1px solid #dad5c1;
+    box-shadow: 0 0 3px alpha(#dad5c1, 0.5);
+}
+
+entry:disabled {
+    background-color: alpha(#989587, 0.2);
+    color: #989587;
+}
+
+/* ===== COMBOBOX ===== */
+combobox button {
+    background-image: none;
+    background-color: #989587;
+    color: #dad5c1;
+    border: 1px solid #989587;
+}
+
+combobox button arrow {
+    color: #dad5c1;
+}
+
+combobox menu {
+    background-color: #1f1e1c;
+    border: 1px solid #989587;
+}
+
+/* ===== HEADERBAR ===== */
+headerbar {
+    background-image: none;
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border-bottom: 1px solid #989587;
+    box-shadow: none;
+}
+
+headerbar button {
+    background-image: none;
+    background-color: transparent;
+}
+
+headerbar entry {
+    background-color: alpha(#1f1e1c, 0.7);
+}
+
+/* ===== MENUS ===== */
+menu {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border: 1px solid #989587;
+}
+
+menuitem {
+    background-color: transparent;
+    color: #dad5c1;
+    padding: 6px 12px;
+}
+
+menuitem:hover {
+    background-color: alpha(#989587, 0.5);
+}
+
+menuitem:disabled {
+    color: #989587;
+}
+
+menuitem label {
+    color: inherit;
+}
+
+/* ===== TOOLBAR ===== */
+toolbar {
+    background-image: none;
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border-bottom: 1px solid #989587;
+}
+
+/* ===== PATHBAR ===== */
+.path-bar button {
+    background-image: none;
+    background-color: transparent;
+    border: none;
+}
+
+.path-bar button:hover {
+    background-color: alpha(#989587, 0.3);
+}
+
+/* ===== TOOLTIPS ===== */
+tooltip {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border: 1px solid #989587;
+    border-radius: 3px;
+}
+
+tooltip label {
+    color: #dad5c1;
+}
+
+/* ===== POPOVERS ===== */
+popover {
+    background-color: #1f1e1c;
+    border: 1px solid #989587;
+}
+
+popover label {
+    color: #dad5c1;
+}
+
+/* ===== SELECTION BOX ===== */
+rubberband {
+    background-color: alpha(#dad5c1, 0.2);
+    border: 1px solid #dad5c1;
+}
+
+/* ===== CHECKBOXES & RADIO ===== */
+checkbutton check {
+    background-image: none;
+    background-color: #1f1e1c;
+    border: 1px solid #989587;
+    border-radius: 3px;
+}
+
+checkbutton check:checked {
+    background-image: none;
+    background-color: #dad5c1;
+    border-color: #dad5c1;
+    color: #1f1e1c;
+    -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+}
+
+checkbutton label {
+    color: #dad5c1;
+}
+
+radiobutton radio {
+    background-image: none;
+    background-color: #1f1e1c;
+    border: 1px solid #989587;
+}
+
+radiobutton radio:checked {
+    background-image: none;
+    background-color: #dad5c1;
+    border-color: #dad5c1;
+}
+
+radiobutton label {
+    color: #dad5c1;
+}
+
+/* ===== SPINBUTTONS ===== */
+spinbutton {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+    border: 1px solid #989587;
+}
+
+spinbutton button {
+    background-image: none;
+    background-color: #989587;
+    color: #dad5c1;
+}
+
+/* ===== PROGRESS BARS ===== */
+progressbar {
+    background-color: alpha(#989587, 0.3);
+    border-radius: 3px;
+}
+
+progressbar progress {
+    background-image: none;
+    background-color: #dad5c1;
+    border-radius: 3px;
+}
+
+/* ===== SEPARATORS ===== */
+separator {
+    background-color: #989587;
+    min-height: 1px;
+    min-width: 1px;
+}
+
+/* ===== TEXT VIEWS ===== */
+textview {
+    background-color: #1f1e1c;
+    color: #dad5c1;
+}
+
+textview text {
+    background-color: transparent;
+    color: #dad5c1;
+}
+
+/* ===== SCALES (Sliders) ===== */
+scale {
+    background-color: transparent;
+}
+
+scale trough {
+    background-color: #989587;
+}
+
+scale slider {
+    background-image: none;
+    background-color: #dad5c1;
+    border: 1px solid #dad5c1;
+}
+
+/* ===== PREVENT ANY WHITE BACKGROUNDS ===== */
+.background {
+    background-color: #1f1e1c;
+}
+
+box {
+    background-color: transparent;
+}
+
+grid {
+    background-color: transparent;
+}

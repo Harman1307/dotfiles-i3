@@ -1,36 +1,25 @@
-# Dotfiles
+# i3 dotfiles
 
-My Arch + i3 setup. Minimal for low end devices. This is my first ever rice so there might be a few errors please stand by!!
+![rice](preview.png)
 
-## What I'm Using
+my daily driver arch + i3 setup
 
-- **OS:** Arch Linux
-- **WM:** i3-gaps
-- **Bar:** Polybar  
-- **Terminal:** Alacritty
-- **Editor:** VSCode
-- **Launcher:** Rofi
-- **Compositor:** Picom
-- **File Manager:** Thunar
-- **Browser:** Brave
-- **Media Player:** MPV
+## whats in here
 
-## Features
+- **wm**: i3
+- **bar**: polybar
+- **launcher**: rofi
+- **terminal**: alacritty
+- **shell**: bash + starship
+- **compositor**: picom
+- **notifications**: dunst
+- **file manager**: thunar
+- **colors**: pywal
 
-- Colors update from wallpaper
-- Transparent with blur (on alacritty, thunar and VS Code)
-- Custom VSCode theme (transparent and syntax highlighting. Nothing much)
-- Optimized for low-end hardware (I personally have a laptop with an intel i3 4030u and 4gb ddr3 ram and it runs quite well on it.)
-- All configs and fonts included
-
-## Wallpaper
-
-I already provided a black and white wallpaper. Feel free to change it.
-
-## Install
+## install
 
 ```bash
-git clone https://github.com/Harman1307/dotfiles
-cd dotfiles
+git clone https://github.com/USERNAME/dotfiles-i3.git ~/dotfiles-i3
+cd ~/dotfiles-i3
+chmod +x install.sh
 ./install.sh
-wal -i wallpapers/cat.jpg

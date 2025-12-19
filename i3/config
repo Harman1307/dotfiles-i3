@@ -1,16 +1,17 @@
-# === i3 CONFIG — MOD WORKING + ALL BINDS ===
+# === i3 CONFIG ===
+
 set $mod Mod4
 
 # Focus
-bindsym $mod+Left  focus left
-bindsym $mod+Down  focus down
-bindsym $mod+Up    focus up
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # Move
-bindsym $mod+Shift+Left  move left
-bindsym $mod+Shift+Down  move down
-bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Workspaces
@@ -31,10 +32,12 @@ bindsym $mod+d exec rofi -show drun -config ~/.config/rofi/config.rasi
 bindsym $mod+e exec thunar
 bindsym $mod+Shift+q kill
 bindsym $mod+w exec --no-startup-id ~/.config/scripts/wallpaper-switcher.sh
-bindsym $mod+Shift+w exec --no-startup-id ~/.config/scripts/random-wallpaper.sh
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/polybar/scripts/powermenu.sh
+bindsym $mod+x exec --no-startup-id ~/.config/i3/lock.sh
+
 
 # Layout
-bindsym $mod+Tab   focus next
+bindsym $mod+Tab focus next
 bindsym $mod+Shift+Tab focus prev
 
 # Gaps & Border
@@ -52,11 +55,11 @@ set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color0 #000000
 set_from_resource $accent i3wm.color4 #0000ff
 
-# Window colors (pywal integrated + no blue border)
-client.focused          #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
+# Window colors
+client.focused #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
 client.focused_inactive #313244 #313244 #cdd6f4 #313244 #313244
-client.unfocused        #313244 #313244 #cdd6f4 #313244 #313244
-client.urgent           $bg     $bg     $fg     $bg
+client.unfocused #313244 #313244 #cdd6f4 #313244 #313244
+client.urgent $bg $bg $fg $bg
 
 # Volume Control
 bindsym F1 exec --no-startup-id amixer set Master toggle
@@ -66,28 +69,36 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
 
-# Lock screen
-bindsym $mod+x exec --no-startup-id ~/.config/i3/lock.sh
-exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/lock.sh' &
-
-# Power menu
-bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/powermenu
-
 # MPV window rules
 for_window [class="mpv"] floating enable, resize set 1280 720, move position center
 
-# === STARTUP (exec once) ===
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id devilspie2 &
-exec --no-startup-id ~/.config/scripts/firefox-transparent.sh &
-exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/lock.sh' &
+# Toggle picom
+bindsym $mod+Shift+p exec --no-startup-id "pkill picom || picom --config ~/.config/picom/picom.conf &"
 
-# === STARTUP (exec_always - runs on reload) ===
+# === STARTUP ===
+exec_always --no-startup-id pkill picom; picom --config ~/.config/picom/picom.conf &
+
+# === STARTUP (runs on reload) ===
 exec_always --no-startup-id wal -R -n
 exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.local/bin/wal-vscode
 exec_always --no-startup-id ~/.local/bin/wal-gtk
 exec_always --no-startup-id dunst
-exec_always --no-startup-id ~/.config/i3/lock-prep.sh &
 exec_always --no-startup-id feh --bg-fill $(cat ~/.cache/wal/wal)
+
+
+# Constrain floating windows to screen
+floating_maximum_size 1300 x 700
+
+for_window [floating] move position center
+
+# Center all floating windows
+for_window [floating] move position center
+
+#auto-tiling
+exec_always --no-startup-id autotiling
+
+#screenshots
+bindsym $mod+p exec --no-startup-id notify-send "test"
+bindsym Shift+Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh select

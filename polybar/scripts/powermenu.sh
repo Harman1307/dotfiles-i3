@@ -1,6 +1,6 @@
 #!/bin/bash
 options="󰌾 Lock\n󰍃 Logout\n󰜉 Reboot\n󰐥 Shutdown"
-chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power Menu" -theme-str 'window {width: 250px;}')
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power Menu" -theme-str 'window {width: 500px;}')
 
 case $chosen in
     *Lock) ~/.config/i3/lock.sh ;;

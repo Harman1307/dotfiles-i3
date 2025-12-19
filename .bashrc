@@ -11,7 +11,6 @@ PS1='[\u@\h \W]\$ '
 
 # Pywal colors
 (cat ~/.cache/wal/sequences &)
-pactl set-sink-volume @DEFAULT_SINK@ -- --use-sample-interval 2
 
 # Media aliases
 alias play='mpv'
@@ -22,3 +21,8 @@ alias imgs='sxiv'
 export PATH="$PATH:/home/harman/.local/bin"
 alias pokemon='pokemon-colorscripts'
 alias poke='pokemon-colorscripts'
+alias rain='terminal-rain'
+alias fish='asciiquarium'
+alias aquarium='asciiquarium'
+alias msg='notify-send'
+eval "$(starship init bash)"
