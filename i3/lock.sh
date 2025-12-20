@@ -5,7 +5,7 @@ if [ ! -f /tmp/lock_screen.png ]; then
     convert $(cat ~/.cache/wal/wal) -blur 0x8 -fill black -colorize 30% /tmp/lock_screen.png
 fi
 
-i3lock -i /tmp/lock_screen.png \
+i3lock -t -i /tmp/lock_screen.png \
   --nofork \
   --ignore-empty-password \
   --radius=80 \

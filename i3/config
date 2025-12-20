@@ -31,8 +31,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+d exec rofi -show drun -config ~/.config/rofi/config.rasi
 bindsym $mod+e exec thunar
 bindsym $mod+Shift+q kill
-bindsym $mod+w exec --no-startup-id ~/.config/scripts/wallpaper-switcher.sh
-bindsym $mod+Shift+e exec --no-startup-id ~/.config/polybar/scripts/powermenu.sh
+bindsym $mod+w exec rofi -show wallpaper
+bindsym $mod+Shift+e exec rofi -show power
 bindsym $mod+x exec --no-startup-id ~/.config/i3/lock.sh
 
 
@@ -100,5 +100,5 @@ for_window [floating] move position center
 exec_always --no-startup-id autotiling
 
 #screenshots
-bindsym $mod+p exec --no-startup-id notify-send "test"
+bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 bindsym Shift+Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh select

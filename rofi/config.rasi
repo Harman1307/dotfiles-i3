@@ -1,52 +1,134 @@
+@theme "/dev/null"
+@import "~/.cache/wal/colors-rofi.rasi"
+
 configuration {
+    modi: "drun,power: /home/harman/.config/rofi/powermenu.sh,wallpaper: /home/harman/.config/rofi/wallpaper-switcher.sh";
+    display-drun: "Apps";
+    display-power: "Power";
+    display-wallpaper: "Wallpapers";
+    drun-display-format: "{icon} {name}";
+    font: "JetBrainsMono Nerd Font 10";
     show-icons: true;
-    font: "JetBrainsMono Nerd Font 11";
-    drun-display-format: "{name}";
-    disable-history: false;
+    icon-theme: "Papirus";
 }
-* {
-    background:     #000000;
-    text:           #ffffff;
-    border:         #333333;
-    accent:         #5294e2;
-}
+
 window {
-    background-color: @background;
-    width:          480;
-    height:         360;
-    location:       center;
-    border:         1px;
-    border-color:   @border;
+    transparency: "real";
+    location: center;
+    anchor: center;
+    width: 1000px;
+    border: 2px solid;
+    border-color: @primary;
+    border-radius: 15px;
+    background-color: @on-primary-fixed;
 }
+
+mainbox {
+    background-color: transparent;
+    orientation: horizontal;
+    children: [ "imagebox", "listbox" ];
+}
+
+imagebox {
+    padding: 20px;
+    background-color: transparent;
+    background-image: url("/home/harman/wallpapers/current.jpg", height);
+    orientation: vertical;
+    children: [ "inputbar", "dummy", "mode-switcher" ];
+}
+
+listbox {
+    spacing: 20px;
+    padding: 20px;
+    background-color: transparent;
+    orientation: vertical;
+    children: [ "message", "listview" ];
+}
+
+dummy {
+    background-color: transparent;
+}
+
 inputbar {
-    background-color: @background;
-    text-color:       @text;
-    padding:          8px;
-    border:           0 0 1px 0;
-    border-color:     @accent;
+    spacing: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: @on-primary;
+    text-color: @on-surface;
+    children: [ "textbox-prompt-colon", "entry" ];
 }
+
+textbox-prompt-colon {
+    expand: false;
+    str: "  ";
+    background-color: inherit;
+    text-color: inherit;
+}
+
+entry {
+    background-color: inherit;
+    text-color: inherit;
+    placeholder: "Search";
+    placeholder-color: inherit;
+}
+
+mode-switcher {
+    spacing: 20px;
+    background-color: transparent;
+    text-color: @primary-fixed;
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: @on-primary;
+    text-color: inherit;
+}
+
+button selected {
+    background-color: @primary;
+    text-color: @on-secondary;
+}
+
 listview {
-    background-color: @background;
-    columns:          1;
-    lines:            8;
-    spacing:          4px;
-    fixed-height:    false;
+    columns: 1;
+    lines: 8;
+    spacing: 10px;
+    background-color: transparent;
+    text-color: @on-surface;
 }
+
 element {
-    padding:          8px;
-    background-color: @background;
-    text-color:       @text;
+    spacing: 15px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: transparent;
+    text-color: @on-surface;
 }
-element selected {
-    background-color: @accent;
-    text-color:       #000000;
+
+element selected.normal {
+    background-color: @primary;
+    text-color: @on-secondary;
 }
-element normal normal,
-element alternate normal,
-element normal urgent,
-element alternate urgent,
-element normal active,
-element alternate active {
-    background-color: @background;
-    text-color:       @text;
+
+element-icon {
+    background-color: transparent;
+    size: 32px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+message {
+    background-color: transparent;
+}
+
+textbox {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: @on-primary;
+    text-color: @on-surface;
 }
