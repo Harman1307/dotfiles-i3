@@ -1,7 +1,5 @@
 # i3 dotfiles
 
-![rice](preview.png)
-
 my daily driver arch + i3 setup
 
 ## whats in here
@@ -24,7 +22,6 @@ my daily driver arch + i3 setup
   <img src="2.png" width="600" alt="2">
   <img src="3.png" width="600" alt="3">
   <img src="4.png" width="600" alt="4">
-  <img src="5.png" width="600" alt="5">
   <img src="6.png" width="600" alt="6">
   <img src="7.png" width="600" alt="7">
 </div>
